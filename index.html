@@ -5,12 +5,849 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travelly web</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+/* ===================================================================
+   TRAVELLY WEB - index.css
+   Complete styles for the Travel Tour landing page
+   Reference: moradhamdy.com/morad/traveltour-demo
+   =================================================================== */
+
+/* ----- RESET & BASE ----- */
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', 'Cairo', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #777;
+    background: #fff;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    color: #333;
+}
+
+p {
+    margin: 0 0 15px;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: #ffc527;
+    transition: all 0.3s ease;
+    outline: none !important;
+}
+
+a:hover {
+    color: #e0a800;
+    text-decoration: none;
+}
+
+/* ----- GRID SYSTEM ----- */
+.container {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+[class*="col-"] {
+    position: relative;
+    min-height: 1px;
+    padding: 0 15px;
+}
+
+.col-md-12 {
+    width: 100%;
+}
+
+.col-md-8 {
+    width: 66.66667%;
+}
+
+.col-md-offset-2 {
+    margin-left: 16.66667%;
+}
+
+/* ----- UTILITY CLASSES ----- */
+.text-center {
+    text-align: center;
+}
+
+.colored {
+    color: #ffc527 !important;
+}
+
+/* ----- HEADER ----- */
+#header {
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+}
+
+#header-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 90px;
+    height: 90px;
+    background: #fff;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#header .container,
+#header .row,
+#header [class*="col-"] {
+    height: 100%;
+}
+
+#header .row {
+    align-items: center;
+}
+
+#header .col-md-12 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* ----- LOGO ----- */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+}
+
+.logo h5 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.logo span {
+    font-size: 11px;
+    color: #999;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-top: -2px;
+}
+
+.logo h5 .colored {
+    color: #ffc527 !important;
+}
+
+/* ----- MAIN MENU ----- */
+.main-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.main-menu li {
+    position: relative;
+}
+
+.main-menu li a {
+    display: block;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.main-menu li a:hover,
+.main-menu li a.current {
+    color: #ffc527;
+}
+
+.main-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: #ffc527;
+    transition: width 0.3s ease;
+}
+
+.main-menu li a:hover::after,
+.main-menu li a.current::after {
+    width: 60%;
+}
+
+/* ----- HEADER BUTTON ----- */
+.header-btn {
+    flex-shrink: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn.small {
+    padding: 8px 20px;
+    font-size: 12px;
+}
+
+.btn.large {
+    padding: 15px 35px;
+    font-size: 14px;
+}
+
+.btn.colorful {
+    background: #ffc527;
+    color: #fff;
+}
+
+.btn.colorful:hover,
+.btn.colorful.hover-dark:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* ----- HAMBURGER MENU (Mobile) ----- */
+.mobile-menu-btn {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto;
+}
+
+.hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 3px;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.hamburger-inner {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger-inner::before {
+    content: '';
+    top: -8px;
+}
+
+.hamburger-inner::after {
+    content: '';
+    bottom: -8px;
+}
+
+/* ----- SCROLLBAR HELPER ----- */
+.ss-scroll {
+    display: none;
+}
+
+/* ----- BANNER SECTION ----- */
+#banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner-parallax {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    margin-top: 90px; /* offset for fixed header */
+}
+
+.banner-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Owl carousel overrides for static display */
+.owl-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.owl-stage-outer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.owl-stage {
+    display: flex;
+    width: 100% !important;
+    height: 100%;
+    transform: none !important;
+}
+
+.owl-item {
+    position: relative;
+    width: 100% !important;
+    height: 100%;
+    flex-shrink: 0;
+    margin: 0 !important;
+}
+
+/* Show only the first slide */
+.owl-item:first-child {
+    display: block;
+}
+
+.owl-item:not(:first-child) {
+    display: none;
+}
+
+.owl-item li,
+.owl-item > li {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    background-color: #ccc;
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Use a high-quality travel image as background */
+.owl-item:first-child li {
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80') !important;
+    background-position: center center !important;
+    background-size: cover !important;
+}
+
+/* ----- SLIDE OVERLAYS ----- */
+.overlay-colored {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.overlay-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* ----- SLIDE CONTENT ----- */
+.slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.slide > img {
+    display: none !important; /* hide the hidden sizing img */
+}
+
+.slide-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+
+.slide-content .container {
+    width: 100%;
+}
+
+.banner-center-box {
+    text-align: center;
+    padding: 20px;
+}
+
+.banner-center-box h1 {
+    font-size: 48px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.banner-center-box h1 .colored {
+    color: #ffc527 !important;
+}
+
+.banner-center-box .description {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-weight: 300;
+}
+
+.banner-center-box .btn {
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(255, 197, 39, 0.4);
+}
+
+.banner-center-box .btn:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ----- FOOTER ----- */
+#footer-mini {
+    background: #222;
+    padding: 30px 0;
+    text-align: center;
+    position: relative;
+}
+
+#footer-mini .col-md-12 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-footer {
+    display: inline-block;
+}
+
+.logo-footer img {
+    height: 40px;
+    width: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.logo-footer:hover img {
+    opacity: 1;
+}
+
+.copyrights-message {
+    font-size: 13px;
+    color: #888;
+    letter-spacing: 0.5px;
+}
+
+.copyrights-message span {
+    color: #ffc527;
+    font-weight: 700;
+}
+
+.scroll-top-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #ffc527;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.scroll-top-btn:hover {
+    background: #e0a800;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(255, 197, 39, 0.4);
+}
+
+/* ----- RESPONSIVE DESIGN ----- */
+
+/* Tablet */
+@media (max-width: 991px) {
+    .container {
+        max-width: 750px;
+    }
+
+    .main-menu li a {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .banner-center-box h1 {
+        font-size: 36px;
+    }
+
+    .col-md-8 {
+        width: 100%;
+    }
+
+    .col-md-offset-2 {
+        margin-left: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .main-menu {
+        display: none;
+    }
+
+    .header-btn {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        margin-left: auto;
+    }
+
+    #header .col-md-12 {
+        justify-content: space-between;
+    }
+
+    .banner-parallax {
+        height: 450px;
+    }
+
+    .banner-center-box h1 {
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+
+    .banner-center-box .description {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .btn.large {
+        padding: 12px 25px;
+        font-size: 13px;
+    }
+
+    .logo h5 {
+        font-size: 16px;
+    }
+
+    .logo span {
+        font-size: 9px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .banner-parallax {
+        height: 380px;
+    }
+
+    .banner-center-box h1 {
+        font-size: 22px;
+    }
+
+    .banner-center-box .description {
+        font-size: 13px;
+    }
+
+    #footer-mini {
+        padding: 20px 0;
+    }
+}
+
+    </style>
 </head>
 
 <body>
 
-    <div></div>
+    </footer>
+    <header id="header" class="">
 
+        <div id="header-wrap">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <a class="logo" href="#">
+                            <img src="https://www.moradhamdy.com/morad/traveltour-demo/images/files/logo.png" alt="">
+
+                        </a>
+
+                        <ul id="main-menu" class="main-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                            <li class=""><a data-scroll-nav="0" href="#home" class="current">Home</a></li>
+                            <li class=""><a data-scroll-nav="1" href="#our-services" class="">Our Services</a></li>
+                            <li class=""><a data-scroll-nav="2" href="#our-adventures" class="">Our Adventures</a></li>
+                            <li class=""><a data-scroll-nav="3" href="#best-events" class="">Our Events</a></li>
+
+                        </ul>
+                        <a class="header-btn btn small colorful hover-dark" href="#">Take a Tour</a>
+                        <div class="mobile-menu-btn hamburger hamburger--slider">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </div>
+
+                        <div class="ss-scroll" style="right: 0px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <section id="banner">
+
+            <div id="home" class="banner-parallax" data-scroll-index="0" style="height: 600px;">
+
+                <div class="banner-slider" style="transform: translateY(0px);">
+                    <ul class="owl-carousel slider-img-bg owl-loaded owl-drag">
+
+
+
+
+
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage"
+                                style="transform: translate3d(-1230px, 0px, 0px); transition: all; width: 4510px;">
+                                <div class="owl-item cloned" style="width: 400px; margin-right: 10px;">
+                                    <li
+                                        style="background-image: url(&quot;images/files/sliders/banner/img-23.jpg&quot;); background-color: rgb(204, 204, 204); background-position: center top; background-size: cover; background-repeat: no-repeat;">
+                                        <div class="overlay-colored" data-bg-color="#000" data-bg-color-opacity="0.50"
+                                            style="background-color: rgba(0, 0, 0, 0.5);"></div>
+
+                                        <div class="overlay-pattern" data-bg-color="#000" data-bg-color-opacity="0"
+                                            style="background-color: rgba(0, 0, 0, 0);"></div>
+
+                                        <div class="slide">
+                                            <img src="images/files/sliders/banner/img-23.jpg"
+                                                style="display: block; height: 600px; opacity: 0;">
+                                            <div class="slide-content" style="opacity: 1.3;">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-8 col-md-offset-2">
+
+                                                            <div class="banner-center-box text-center">
+                                                                <h1 style="opacity: 1; top: 1px;">
+                                                                    Awesome &amp; Creative<br><span
+                                                                        class="colored">Travel Template</span>
+                                                                </h1>
+                                                                <div class="description" style="opacity: 1; top: 1px;">
+                                                                    Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s
+                                                                </div>
+                                                                <a class="btn colorful large hover-dark" href="#"
+                                                                    style="opacity: 1; top: 1px;">Eplore More</a>
+                                                            </div>
+
+                                                        </div><!-- .col-md-12 end -->
+                                                    </div><!-- .row end -->
+                                                </div><!-- .container end -->
+                                            </div><!-- .slide-content end -->
+                                        </div><!-- .slide end -->
+                                    </li>
+                                </div>
+                                <div class="owl-item cloned" style="width: 400px; margin-right: 10px;">
+                                    <li
+                                        style="background-image: url(&quot;images/files/sliders/banner/img-20.jpg&quot;); background-color: rgb(204, 204, 204); background-position: center top; background-size: cover; background-repeat: no-repeat;">
+                                        <div class="overlay-colored" data-bg-color="#000" data-bg-color-opacity="0.50"
+                                            style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                                        <!-- .overlay-colored end -->
+                                        <div class="overlay-pattern" data-bg-color="#000" data-bg-color-opacity="0"
+                                            style="background-color: rgba(0, 0, 0, 0);"></div>
+                                        <!-- .overlay-pattern end -->
+                                        <div class="slide">
+                                            <img src="images/files/sliders/banner/img-20.jpg"
+                                                style="display: block; height: 600px; opacity: 0;">
+                                            <div class="slide-content" style="opacity: 1.3;">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-8 col-md-offset-2">
+
+                                                            <div class="banner-center-box text-center">
+                                                                <h1 style="opacity: 1; top: 1px;">
+                                                                    Awesome &amp; Creative<br><span
+                                                                        class="colored">Travel Template</span>
+                                                                </h1>
+                                                                <div class="description" style="opacity: 1; top: 1px;">
+                                                                    Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s
+                                                                </div>
+                                                                <a class="btn colorful large hover-dark" href="#"
+                                                                    style="opacity: 1; top: 1px;">Eplore More</a>
+                                                            </div><!-- .banner-center-box end -->
+
+                                                        </div><!-- .col-md-12 end -->
+                                                    </div><!-- .row end -->
+                                                </div><!-- .container end -->
+                                            </div><!-- .slide-content end -->
+                                        </div><!-- .slide end -->
+                                    </li>
+                                </div>
+                                <div class="owl-item cloned" style="width: 400px; margin-right: 10px;">
+                                    <li
+                                        style="background-image: url(&quot;images/files/sliders/banner/img-11.jpg&quot;); background-color: rgb(204, 204, 204); background-position: center top; background-size: cover; background-repeat: no-repeat;">
+                                        <div class="overlay-colored" data-bg-color="#000" data-bg-color-opacity="0.50"
+                                            style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                                        <!-- .overlay-colored end -->
+                                        <div class="overlay-pattern" data-bg-color="#000" data-bg-color-opacity="0"
+                                            style="background-color: rgba(0, 0, 0, 0);"></div>
+                                        <!-- .overlay-pattern end -->
+                                        <div class="slide">
+                                            <img src="images/files/sliders/banner/img-11.jpg"
+                                                style="display: block; height: 600px; opacity: 0;">
+                                            <div class="slide-content" style="opacity: 1.3;">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-8 col-md-offset-2">
+
+                                                            <div class="banner-center-box text-center">
+                                                                <h1 style="opacity: 1; top: 1px;">
+                                                                    Awesome &amp; Creative<br><span
+                                                                        class="colored">Travel Template</span>
+                                                                </h1>
+                                                                <div class="description" style="opacity: 1; top: 1px;">
+                                                                    Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s
+                                                                </div>
+                                                                <a class="btn colorful large hover-dark" href="#"
+                                                                    style="opacity: 1; top: 1px;">Eplore More</a>
+                                                            </div><!-- .banner-center-box end -->
+
+                                                        </div><!-- .col-md-12 end -->
+                                                    </div><!-- .row end -->
+                                                </div><!-- .container end -->
+                                            </div><!-- .slide-content end -->
+                                        </div><!-- .slide end -->
+                                    </li>
+                                </div>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer id="footer-mini">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a class="logo-footer" href="#"><img
+                                src="https://www.moradhamdy.com/morad/traveltour-demo/images/files/logo.png" alt=""></a>
+                        <div class="copyrights-message">2016 - 2017 © <span>Travel Tour</span>. All rights reserved.
+                        </div>
+                        <a href="#" class="scroll-top-btn"><i class="fa fa-angle-up"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+    </header>
 </body>
 
 </html>
